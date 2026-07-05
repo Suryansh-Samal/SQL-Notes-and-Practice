@@ -2,6 +2,8 @@
 
 A collection of my SQL Server practice, notes, and exercises as I prepare for Data Engineering roles.
 
+---
+
 ## 🛠️ Tools
 
 - SQL Server Management Studio (SSMS)
@@ -9,32 +11,48 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - Git
 - GitHub
 
-## 📚 Topics Covered
+---
 
-### 01-Basics
+## 📚 Progress
+
+### 📁 01-Basics
 - [x] SELECT
 - [ ] WHERE
 - [ ] ORDER BY
 - [ ] DISTINCT
 - [ ] TOP
+- [ ] LIKE
+- [ ] BETWEEN
+- [ ] IN
+- [ ] IS NULL
 
-### 02-Functions
+### 📁 02-DML (Data Manipulation Language)
+- [x] INSERT
+- [ ] UPDATE
+- [ ] DELETE
+- [ ] MERGE
+
+### 📁 03-Functions
 - [ ] CAST
 - [ ] CONVERT
 - [ ] FORMAT
 - [ ] DATEADD
 - [ ] DATEDIFF
 - [ ] DATETRUNC
+- [ ] GETDATE
+- [ ] ISNULL
+- [ ] COALESCE
 
-### 03-Aggregations
+### 📁 04-Aggregations
 - [ ] COUNT
 - [ ] SUM
 - [ ] AVG
-- [ ] MIN / MAX
+- [ ] MIN
+- [ ] MAX
 - [ ] GROUP BY
 - [ ] HAVING
 
-### 04-Joins
+### 📁 05-Joins
 - [ ] INNER JOIN
 - [ ] LEFT JOIN
 - [ ] RIGHT JOIN
@@ -42,29 +60,61 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [ ] CROSS JOIN
 - [ ] SELF JOIN
 
-### 05-Advanced SQL
-- [ ] Subqueries
-- [ ] CTEs
-- [ ] Window Functions
-- [ ] Views
-- [ ] Stored Procedures
+### 📁 06-Subqueries
+- [ ] Scalar Subqueries
+- [ ] Correlated Subqueries
+- [ ] EXISTS
+- [ ] NOT EXISTS
+
+### 📁 07-CTEs
+- [ ] Common Table Expressions
+- [ ] Recursive CTEs
+
+### 📁 08-Window Functions
+- [ ] ROW_NUMBER()
+- [ ] RANK()
+- [ ] DENSE_RANK()
+- [ ] NTILE()
+- [ ] LEAD()
+- [ ] LAG()
+
+### 📁 09-Views
+- [ ] CREATE VIEW
+- [ ] ALTER VIEW
+
+### 📁 10-Stored Procedures
+- [ ] CREATE PROCEDURE
+- [ ] Parameters
+- [ ] EXEC
+
+### 📁 11-Mini Projects
+- [ ] Sales Analysis
+- [ ] Customer Analytics
+- [ ] Order Management
+
+---
 
 ## 🎯 Goal
 
 Build a strong SQL foundation for Data Engineering and technical interviews.
 
+---
+
 ## 📂 Repository Structure
 
-```
+```text
 SQL-Notes-and-Practice/
 │
 ├── README.md
 ├── 01-Basics/
-│   ├── 01_SELECT.sql
-│   ├── 02_WHERE.sql
-│   └── ...
-├── 02-Functions/
-├── 03-Aggregations/
-├── 04-Joins/
-└── ...
+├── 02-DML/
+├── 03-Functions/
+├── 04-Aggregations/
+├── 05-Joins/
+├── 06-Subqueries/
+├── 07-CTEs/
+├── 08-Window-Functions/
+├── 09-Views/
+├── 10-Stored-Procedures/
+└── 11-Mini-Projects/
 ```
