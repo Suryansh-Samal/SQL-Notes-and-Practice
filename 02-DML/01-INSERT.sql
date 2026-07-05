@@ -3,7 +3,7 @@
 Topic       : INSERT Statement
 Database    : MyDatabase
 Description : Insert a new record into a table.
-Author      : Suryansh Samal
+Author      : Suryansh
 ===========================================================
 */
 
