@@ -17,7 +17,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 
 ### 📁 01-Basics
 - [x] SELECT
-- [ ] WHERE
+- [X] WHERE
 - [ ] ORDER BY
 - [ ] DISTINCT
 - [ ] TOP
