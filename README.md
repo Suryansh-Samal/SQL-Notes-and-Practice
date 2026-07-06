@@ -37,7 +37,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [ ] CONVERT
 - [ ] FORMAT
 - [ ] DATEADD
-- [ ] DATEDIFF
+- [X] DATEDIFF
 - [ ] DATETRUNC
 - [ ] GETDATE
 - [ ] ISNULL
