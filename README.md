@@ -33,10 +33,10 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [ ] MERGE
 
 ### 📁 03-Functions
-- [ ] CAST
+- [X] CAST
 - [ ] CONVERT
-- [ ] FORMAT
-- [ ] DATEADD
+- [X] FORMAT
+- [X] DATEADD
 - [X] DATEDIFF
 - [ ] DATETRUNC
 - [ ] GETDATE
