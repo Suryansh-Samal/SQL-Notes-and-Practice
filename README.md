@@ -24,7 +24,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [ ] LIKE
 - [ ] BETWEEN
 - [ ] IN
-- [ ] IS NULL
+- [X] IS NULL
 
 ### 📁 02-DML (Data Manipulation Language)
 - [x] INSERT
@@ -34,14 +34,14 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 
 ### 📁 03-Functions
 - [X] CAST
-- [ ] CONVERT
+- [X] CONVERT
 - [X] FORMAT
 - [X] DATEADD
 - [X] DATEDIFF
 - [ ] DATETRUNC
 - [ ] GETDATE
 - [ ] ISNULL
-- [ ] COALESCE
+- [X] COALESCE
 
 ### 📁 04-Aggregations
 - [ ] COUNT
