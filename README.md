@@ -40,6 +40,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] DATEDIFF
 - [ ] DATETRUNC
 - [ ] GETDATE
+- [X] ISDATE
 - [ ] ISNULL
 - [X] COALESCE
 
