@@ -24,7 +24,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [ ] LIKE
 - [ ] BETWEEN
 - [ ] IN
-- [X] IS NULL
+- [X] IS NULL AND NOT NULL
 
 ### 📁 02-DML (Data Manipulation Language)
 - [x] INSERT
