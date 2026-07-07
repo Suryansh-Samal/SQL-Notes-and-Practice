@@ -50,6 +50,14 @@ LEFT JOIN Sales.Orders AS O
 WHERE O.OrderID IS NULL;
 
 -----------------------------------------------------------
+-- Q4. All customers who have scores.
+-----------------------------------------------------------
+SELECT
+    *
+FROM Sales.Customers
+WHERE Score IS NOT NULL;
+
+-----------------------------------------------------------
 -- Concepts Covered
 -----------------------------------------------------------
 -- ✓ NULL Values
@@ -58,5 +66,6 @@ WHERE O.OrderID IS NULL;
 -- ✓ ORDER BY
 -- ✓ LEFT JOIN
 -- ✓ IS NULL
+-- ✓ IS NOT NULL
 -- ✓ Filtering NULL Values
 -- ✓ Finding Unmatched Records
