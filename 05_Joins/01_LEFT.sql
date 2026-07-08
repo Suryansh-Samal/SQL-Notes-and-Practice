@@ -24,6 +24,21 @@ FROM Customers AS C
 LEFT JOIN Orders AS O
     ON C.ID = O.Customer_ID;
 
+    -----------------------------------------------------------
+-- Q2. Retrieve orders that do not have
+-- a matching customer.
+-----------------------------------------------------------
+SELECT
+    O.OrderID,
+    O.Customer_ID,
+    O.Sales,
+    C.ID,
+    C.FirstName
+FROM Orders AS O
+LEFT JOIN Customers AS C
+    ON O.Customer_ID = C.ID
+WHERE C.ID IS NULL;
+
 -----------------------------------------------------------
 -- Concepts Covered
 -----------------------------------------------------------
