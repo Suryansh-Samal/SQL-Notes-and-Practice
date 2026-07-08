@@ -11,10 +11,10 @@ Author      : Suryansh
 
 USE SalesDB;
 
------------------------------------------------------------
+----------------------------------------------------------
 -- Q1. Retrieve all orders along with their customers.
 -- Orders without matching customers are also included.
------------------------------------------------------------
+----------------------------------------------------------
 SELECT
     C.ID,
     C.FirstName,
