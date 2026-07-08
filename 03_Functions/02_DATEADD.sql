@@ -4,7 +4,7 @@ Topic       : DATEADD()
 Database    : MyDatabase
 Description : Practice using the DATEADD() function to
               add or subtract days, months, and years.
-Author      : Suryansh Samal
+Author      : Suryansh
 ===========================================================
 */
 
