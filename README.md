@@ -39,26 +39,26 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] DATEADD
 - [X] DATEDIFF
 - [ ] DATETRUNC
-- [ ] GETDATE
+- [X] GETDATE
 - [X] ISDATE
 - [ ] ISNULL
 - [X] COALESCE
 
 ### 📁 04-Aggregations
-- [ ] COUNT
-- [ ] SUM
-- [ ] AVG
-- [ ] MIN
-- [ ] MAX
-- [ ] GROUP BY
-- [ ] HAVING
+- [X] COUNT
+- [X] SUM
+- [X] AVG
+- [X] MIN
+- [X] MAX
+- [X] GROUP BY
+- [X] HAVING
 
 ### 📁 05-Joins
-- [ ] INNER JOIN
-- [ ] LEFT JOIN
-- [ ] RIGHT JOIN
-- [ ] FULL JOIN
-- [ ] CROSS JOIN
+- [X] INNER JOIN
+- [X] LEFT JOIN
+- [X] RIGHT JOIN
+- [X] FULL JOIN
+- [X] CROSS JOIN
 - [ ] SELF JOIN
 
 ### 📁 06-Subqueries
