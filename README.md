@@ -72,12 +72,12 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [ ] Recursive CTEs
 
 ### 📁 08-Window Functions
-- [ ] ROW_NUMBER()
-- [ ] RANK()
-- [ ] DENSE_RANK()
-- [ ] NTILE()
-- [ ] LEAD()
-- [ ] LAG()
+- [X] ROW_NUMBER()
+- [X] RANK()
+- [X] DENSE_RANK()
+- [X] NTILE()
+- [X] LEAD()
+- [X] LAG()
 
 ### 📁 09-Views
 - [ ] CREATE VIEW
