@@ -19,11 +19,11 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [x] SELECT
 - [X] WHERE
 - [ ] ORDER BY
-- [ ] DISTINCT
+- [X] DISTINCT
 - [ ] TOP
 - [ ] LIKE
 - [ ] BETWEEN
-- [ ] IN
+- [X] IN
 - [X] IS NULL AND NOT NULL
 
 ### 📁 02-DML (Data Manipulation Language)
@@ -62,10 +62,11 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [ ] SELF JOIN
 
 ### 📁 06-Subqueries
-- [ ] Scalar Subqueries
-- [ ] Correlated Subqueries
-- [ ] EXISTS
-- [ ] NOT EXISTS
+- [X] Scalar Subqueries
+- [X] Multi ROw subqueries
+- [X] Correlated Subqueries
+- [X] EXISTS
+- [X] NOT EXISTS
 
 ### 📁 07-CTEs
 - [ ] Common Table Expressions
@@ -78,6 +79,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] NTILE()
 - [X] LEAD()
 - [X] LAG()
+- [X] First Value() & Last Value()
 
 ### 📁 09-Views
 - [ ] CREATE VIEW
