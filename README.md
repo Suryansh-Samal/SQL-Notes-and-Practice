@@ -4,7 +4,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 
 ---
 
-## 🛠️ Tools
+## Tools
 
 - SQL Server Management Studio (SSMS)
 - Visual Studio Code
@@ -13,9 +13,9 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 
 ---
 
-## 📚 Progress
+## Progress
 
-### 📁 01-Basics
+### 01-Basics
 - [x] SELECT
 - [X] WHERE
 - [ ] ORDER BY
@@ -26,13 +26,13 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] IN
 - [X] IS NULL AND NOT NULL
 
-### 📁 02-DML (Data Manipulation Language)
+### 02-DML (Data Manipulation Language)
 - [x] INSERT
 - [ ] UPDATE
 - [ ] DELETE
 - [ ] MERGE
 
-### 📁 03-Functions
+### 03-Functions
 - [X] CAST
 - [X] CONVERT
 - [X] FORMAT
@@ -44,7 +44,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [ ] ISNULL
 - [X] COALESCE
 
-### 📁 04-Aggregations
+### 04-Aggregations
 - [X] COUNT
 - [X] SUM
 - [X] AVG
@@ -53,7 +53,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] GROUP BY
 - [X] HAVING
 
-### 📁 05-Joins
+### 05-Joins
 - [X] INNER JOIN
 - [X] LEFT JOIN
 - [X] RIGHT JOIN
@@ -61,18 +61,18 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] CROSS JOIN
 - [ ] SELF JOIN
 
-### 📁 06-Subqueries
+### 06-Subqueries
 - [X] Scalar Subqueries
 - [X] Multi ROw subqueries
 - [X] Correlated Subqueries
 - [X] EXISTS
 - [X] NOT EXISTS
 
-### 📁 07-CTEs
+### 07-CTEs
 - [ ] Common Table Expressions
 - [ ] Recursive CTEs
 
-### 📁 08-Window Functions
+### 08-Window Functions
 - [X] ROW_NUMBER()
 - [X] RANK()
 - [X] DENSE_RANK()
@@ -81,29 +81,29 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] LAG()
 - [X] First Value() & Last Value()
 
-### 📁 09-Views
+### 09-Views
 - [ ] CREATE VIEW
 - [ ] ALTER VIEW
 
-### 📁 10-Stored Procedures
+### 10-Stored Procedures
 - [ ] CREATE PROCEDURE
 - [ ] Parameters
 - [ ] EXEC
 
-### 📁 11-Mini Projects
+### 11-Mini Projects
 - [ ] Sales Analysis
 - [ ] Customer Analytics
 - [ ] Order Management
 
 ---
 
-## 🎯 Goal
+## Goal
 
 Build a strong SQL foundation for Data Engineering and technical interviews.
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 SQL-Notes-and-Practice/
