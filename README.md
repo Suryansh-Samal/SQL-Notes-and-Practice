@@ -18,9 +18,9 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 ### 01-Basics
 - [x] SELECT
 - [X] WHERE
-- [ ] ORDER BY
+- [X] ORDER BY
 - [X] DISTINCT
-- [ ] TOP
+- [X] TOP
 - [ ] LIKE
 - [ ] BETWEEN
 - [X] IN
@@ -69,8 +69,8 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] NOT EXISTS
 
 ### 07-CTEs
-- [ ] Common Table Expressions
-- [ ] Recursive CTEs
+- [X] Common Table Expressions
+- [X] Recursive CTEs
 
 ### 08-Window Functions
 - [X] ROW_NUMBER()
@@ -82,8 +82,8 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] First Value() & Last Value()
 
 ### 09-Views
-- [ ] CREATE VIEW
-- [ ] ALTER VIEW
+- [X] CREATE VIEW
+- [X] ALTER VIEW
 
 ### 10-Stored Procedures
 - [ ] CREATE PROCEDURE
