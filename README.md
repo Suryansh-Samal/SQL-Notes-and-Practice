@@ -28,8 +28,8 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 
 ### 02-DML (Data Manipulation Language)
 - [x] INSERT
-- [ ] UPDATE
-- [ ] DELETE
+- [X] UPDATE
+- [X] DELETE
 - [ ] MERGE
 
 ### 03-Functions
@@ -38,10 +38,10 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] FORMAT
 - [X] DATEADD
 - [X] DATEDIFF
-- [ ] DATETRUNC
+- [X] DATETRUNC
 - [X] GETDATE
 - [X] ISDATE
-- [ ] ISNULL
+- [X] ISNULL
 - [X] COALESCE
 
 ### 04-Aggregations
