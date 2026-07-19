@@ -59,7 +59,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] RIGHT JOIN
 - [X] FULL JOIN
 - [X] CROSS JOIN
-- [ ] SELF JOIN
+- [X] SELF JOIN
 
 ### 06-Subqueries
 - [X] Scalar Subqueries
@@ -86,11 +86,15 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] ALTER VIEW
 
 ### 10-Stored Procedures
-- [ ] CREATE PROCEDURE
-- [ ] Parameters
-- [ ] EXEC
+- [X] CREATE PROCEDURE
+- [X] Parameters
+- [X] EXEC
 
-### 11-Mini Projects
+### 11-Temporary Tables
+- [X] CTA
+- [X] Temporart Tables
+
+### 12-Mini Projects
 - [ ] Sales Analysis
 - [ ] Customer Analytics
 - [ ] Order Management
