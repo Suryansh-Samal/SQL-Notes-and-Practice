@@ -101,6 +101,28 @@ HAVING MAX(Sales) IS NOT NULL
 ORDER BY Highest_Sales DESC;
 
 -----------------------------------------------------------
+-- Find Second highest Salary
+-----------------------------------------------------------
+Select
+    Max(Salary) SecondHIghestSalary
+from Employee
+where salary<(Select
+Max(Salary)
+from Employee)
+
+---------------------------------------------------------------------------------------------------------------
+/*Write a solution to report the first name, last name, city, and state of each person in the Person table. 
+If the address of a personId is not present in the Address table, report null instead.*/
+---------------------------------------------------------------------------------------------------------------
+Select 
+    p.firstName,
+    p.lastName,
+    case when city is null then null
+    else city
+    end City,
+    case when state is null then null
+
+-----------------------------------------------------------
 -- Concepts Covered
 -----------------------------------------------------------
 -- ✓ GROUP BY
