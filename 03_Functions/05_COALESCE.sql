@@ -1,62 +1,63 @@
 /*
 ===========================================================
-Topic       : NULL Handling
-Database    : MyDatabase
-Description : Practice handling NULL values using CASE,
-              sorting techniques, filtering records, and
-              identifying customers without related orders.
+Topic       : COALESCE()
+Database    : SalesDB
+Description : Practice handling NULL values using the
+              COALESCE() function in SQL Server.
 Author      : Suryansh
 ===========================================================
 */
 
-USE MyDatabase;
+USE SalesDB;
 
 -----------------------------------------------------------
--- Q1. Sort customers by score in ascending order,
--- placing NULL values at the end.
+-- Q1. Calculate the average customer score by
+-- replacing NULL scores with 0.
 -----------------------------------------------------------
+
 SELECT
+
     CustomerID,
+
     Score,
-    CASE
-        WHEN Score IS NULL THEN 1
-        ELSE 0
-    END AS Flag
-FROM Sales.Customers
-ORDER BY
-    Flag,
-    Score;
+
+    AVG(COALESCE(Score, 0)) OVER() AS Avg_Score
+
+FROM Sales.Customers;
 
 -----------------------------------------------------------
--- Q2. Retrieve all customers with no score.
+-- Q2. Display the full name of each customer.
+-- If LastName is NULL, replace it with a blank
+-- space. Also award each customer 10 bonus
+-- points, treating NULL scores as 0.
 -----------------------------------------------------------
-SELECT
-    *
-FROM Sales.Customers
-WHERE Score IS NULL;
 
------------------------------------------------------------
--- Q3. Retrieve customers who have never placed an order.
------------------------------------------------------------
 SELECT
-    C.CustomerID,
-    C.FirstName,
-    C.LastName,
-    C.Country,
-    O.OrderID
-FROM Sales.Customers AS C
-LEFT JOIN Sales.Orders AS O
-    ON O.CustomerID = C.CustomerID
-WHERE O.OrderID IS NULL;
+
+    FirstName,
+
+    LastName AS Last_Name,
+
+    CONCAT
+    (
+        FirstName,
+        ' ',
+        COALESCE(LastName, ' ')
+    ) AS Full_Name,
+
+    Score,
+
+    COALESCE(Score, 0) + 10 AS Bonus_Points
+
+FROM Sales.Customers;
 
 -----------------------------------------------------------
 -- Concepts Covered
 -----------------------------------------------------------
--- ✓ NULL Values
--- ✓ CASE Expression
--- ✓ CASE WHEN
--- ✓ ORDER BY
--- ✓ LEFT JOIN
--- ✓ IS NULL
--- ✓ Filtering NULL Values
--- ✓ Finding Unmatched Records
+-- ✓ COALESCE()
+-- ✓ NULL Handling
+-- ✓ CONCAT()
+-- ✓ Window Functions
+-- ✓ AVG() OVER()
+-- ✓ Calculated Columns
+-- ✓ String Functions

@@ -22,7 +22,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] DISTINCT
 - [X] TOP
 - [ ] LIKE
-- [ ] BETWEEN
+- [X] BETWEEN
 - [X] IN
 - [X] IS NULL AND NOT NULL
 
