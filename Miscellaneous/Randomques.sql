@@ -178,3 +178,33 @@ FROM
 ) AS T
 WHERE SalaryRank <=3;
 
+
+---First Login
+Select
+    player_id,
+    min(event_date) as first_login
+from activity
+group by player_id
+
+--Rising Temperature 
+Select 
+  id 
+from 
+(
+    Select 
+    id,
+    recordDate,
+    temperature,
+    lag(temperature) over (order by recorddate) prevtemp
+    from weather
+)t
+where temperature>prevtemp
+
+-- Duplicate emails
+DELETE FROM Person
+WHERE Id NOT IN
+(
+    SELECT MIN(Id)
+    FROM Person
+    GROUP BY Email
+);
