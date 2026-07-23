@@ -155,3 +155,26 @@ Select
     count(*) over (partition by email) as TotalCount
 from person)t
 where TotalCount>1
+
+-- Top 3 highest salaries of each department
+SELECT
+    Department,
+    Employee,
+    Salary
+FROM
+(
+    SELECT
+        d.Name AS Department,
+        e.Name AS Employee,
+        e.Salary,
+        dense_RANK() OVER
+        (
+            PARTITION BY DepartmentId
+            ORDER BY Salary DESC
+        ) AS SalaryRank
+    FROM Employee AS e
+    LEFT JOIN Department AS d
+        ON d.Id = e.DepartmentId
+) AS T
+WHERE SalaryRank <=3;
+
