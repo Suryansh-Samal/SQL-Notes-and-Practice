@@ -122,19 +122,36 @@ Select
     end City,
     case when state is null then null
 
------------------------------------------------------------
--- Concepts Covered
------------------------------------------------------------
--- ✓ GROUP BY
--- ✓ ORDER BY
--- ✓ Aggregate Functions
--- ✓ COUNT()
--- ✓ MAX()
--- ✓ SUM()
--- ✓ Subqueries
--- ✓ Nested Queries
--- ✓ Joins
--- ✓ LEFT JOIN
--- ✓ HAVING
--- ✓ NOT IN
--- ✓ FORMAT()
+-- Highest salary in each department
+Select 
+    Department,
+    Employee,
+    Salary
+from (
+Select 
+    d.name as Department,
+    e.name as Employee,
+    e.Salary,
+    Rank() over (Partition by departmentID Order by Salary Desc) as SalaryRank
+from employee e
+left join department d
+on e.departmentid = d.id)t
+where salaryrank = 1
+
+-- Customers who never ordered
+Select 
+    c.name as Customers
+from customers c
+left join orders o
+on c.id = o.customerid
+where o.customerID is null
+
+-- duplicate emails
+Select distinct
+email 
+from(
+Select 
+    email,
+    count(*) over (partition by email) as TotalCount
+from person)t
+where TotalCount>1
