@@ -208,3 +208,14 @@ WHERE Id NOT IN
     FROM Person
     GROUP BY Email
 );
+
+-- Select employee who has atleast five reports
+Select 
+name
+from employee
+where id in (
+SELECT
+    ManagerId
+FROM Employee
+GROUP BY ManagerId
+having COUNT(*)>=5);
