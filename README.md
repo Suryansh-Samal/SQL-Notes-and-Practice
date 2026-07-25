@@ -21,7 +21,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] ORDER BY
 - [X] DISTINCT
 - [X] TOP
-- [ ] LIKE
+- [X] LIKE
 - [X] BETWEEN
 - [X] IN
 - [X] IS NULL AND NOT NULL
