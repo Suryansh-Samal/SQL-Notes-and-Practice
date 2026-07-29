@@ -30,7 +30,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [x] INSERT
 - [X] UPDATE
 - [X] DELETE
-- [ ] MERGE
+- [X] MERGE
 
 ### 03-Functions
 - [X] CAST
@@ -95,9 +95,7 @@ A collection of my SQL Server practice, notes, and exercises as I prepare for Da
 - [X] Temporart Tables
 
 ### 12-Mini Projects
-- [ ] Sales Analysis
-- [ ] Customer Analytics
-- [ ] Order Management
+- [X] Data Warehousing using Medallion Architecture
 
 ---
 
