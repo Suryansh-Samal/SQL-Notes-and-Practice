@@ -121,6 +121,6 @@ SQL-Notes-and-Practice/
 ├── 08-Window-Functions/
 ├── 09-Views/
 ├── 10-Stored-Procedures/
-├── 11-Temporary-Tables
+├── 11-Temporary-Tables/
 └── 12-Mini-Projects/
 ```
