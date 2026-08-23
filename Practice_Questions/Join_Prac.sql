@@ -234,3 +234,138 @@ Inner join Sales.Orders o on c.CustomerID = o.CustomerID
 Group by c.CustomerID,
 		 c.FirstName
 Having Count(Distinct o.OrderDate) >=2
+
+/* Q15 Find customers who have placed orders, but have never placed an order with Sales < 20.
+Return:
+CustomerID | FirstName*/
+Select 
+	c.CustomerID,
+	c.FirstName
+from Sales.Customers c
+inner join Sales.Orders o on c.CustomerID = o.CustomerID
+group by c.CustomerID,
+		 c.FirstName
+Having count(case when o.sales<20 then 1 end) = 0 
+	
+/* Q16 Find customers whose total sales are greater than 100, but who have placed at least 3 orders.
+Return:
+CustomerID | FirstName | TotalOrders | TotalSales
+Requirements:
+Customer must have at least 3 orders
+Their total sales must be greater than 100
+Sort by TotalSales descending*/
+Select 
+	c.CustomerID,
+	c.FirstName,
+	Count(o.OrderID) as TotalOrders,
+	Sum(o.Sales) as TotalSales
+from Sales.Customers c
+inner join Sales.Orders o on c.CustomerID = o.CustomerID
+Group by c.CustomerID,
+		 c.FirstName
+Having Count(o.OrderID)>=3 and Sum(Sales)>100
+
+/* Q17 Find the customers who have placed orders for more than one different ProductID.
+Return:
+CustomerID | FirstName | DistinctProducts
+Requirements:
+A customer may have ordered the same product multiple times.
+That product should count only once.
+Only customers who ordered 2 or more different products should appear.
+Sort by DistinctProducts descending.*/
+Select
+	c.CustomerID,
+	c.FirstName,
+	Count(distinct o.ProductID) as DistinctProducts
+from Sales.Customers c
+inner join Sales.Orders o on o.CustomerID = c.CustomerID
+Group by c.CustomerID,
+		 c.FirstName
+Having Count(distinct o.ProductID)>=2
+Order by DistinctProducts
+
+--Q18 Show CustomerID, FirstName, Product and totalorders per product by each customer
+SELECT
+    c.CustomerID,
+    c.FirstName,
+    p.Product,
+    COUNT(o.ProductID) AS OrderCountPerProduct
+FROM Sales.Customers c
+INNER JOIN Sales.Orders o
+    ON c.CustomerID = o.CustomerID
+INNER JOIN Sales.Products p
+    ON o.ProductID = p.ProductID
+GROUP BY
+    c.CustomerID,
+    c.FirstName,
+    p.Product
+	
+/* Q19 Return every order along with its customer information.
+Return:
+OrderID | FirstName | Country | Sales
+Requirements:
+Include EVERY order.
+Even if an order's CustomerID has no match in Sales.Customers, keep that order.
+For unmatched orders, FirstName and Country should be NULL.
+Don't filter out unmatched orders.*/
+Select 
+	o.OrderID,
+	c.FirstName,
+	c.Country,
+	o.Sales
+from Sales.Orders o 
+left join Sales.Customers c on c.CustomerID = o.CustomerID
+
+/* Q20 Return all customers and all orders, including:
+Customers who have orders
+Customers who have no orders
+Orders whose CustomerID has no matching customer
+Return:
+CustomerID | FirstName | OrderID | Sales*/
+ Select 
+	c.CustomerID,
+	c.FirstName,
+	o.OrderID,
+	o.Sales
+from Sales.Customers c 
+Full join Sales.Orders o on c.CustomerID = o.CustomerID
+
+/* Q21 Find the total number of customers and the total number of orders.
+Return exactly:
+TotalCustomers | TotalOrders
+Important requirements
+A customer with 5 orders must count as 1 customer.
+Every order should count as 1 order.*/
+WITH TotalCustomers AS (
+    SELECT COUNT(DISTINCT o.CustomerID) AS TotalCustomers
+    FROM Sales.Customers c
+    INNER JOIN Sales.Orders o 
+        ON c.CustomerID = o.CustomerID
+),
+TotalOrders AS (
+    SELECT COUNT(*) AS TotalOrders
+    FROM Sales.Orders
+)
+SELECT
+    tc.TotalCustomers,
+    tor.TotalOrders
+FROM TotalCustomers tc
+CROSS JOIN TotalOrders tor;
+
+-- Also be done like this
+SELECT
+    COUNT(DISTINCT c.CustomerID) AS TotalCustomers,
+    COUNT(o.OrderID) AS TotalOrders
+FROM Sales.Customers c
+INNER JOIN Sales.Orders o
+    ON c.CustomerID = o.CustomerID;
+
+-- Also like this
+SELECT
+     (SELECT COUNT(DISTINCT o.CustomerID)
+    FROM Sales.Customers c
+    INNER JOIN Sales.Orders o 
+        ON c.CustomerID = o.CustomerID) As TotalCustomers,
+
+    (SELECT COUNT(*) 
+     FROM Sales.Orders) AS TotalOrders;
