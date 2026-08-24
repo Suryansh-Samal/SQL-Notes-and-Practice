@@ -599,3 +599,41 @@ Select
 	TotalSales
 from CustomerRanking
 where CustomerRanks = 1
+
+/* Q32 Find all customers who have placed an order, along with the date of their most recent order.
+Return:
+CustomerID | FirstName | LastOrderDate*/
+Select 
+	c.CustomerID,
+	c.FirstName,
+	Max(o.OrderDate) as LastOrderDate
+from Sales.Customers c
+inner join Sales.Orders o on c.CustomerID = o.CustomerID
+Group by c.CustomerID,
+		 c.FirstName;
+
+/* Q33 Find customers who have placed orders, but whose latest order has Sales < 50.
+Return:
+CustomerID | FirstName | LastOrderDate | LastOrderSales*/
+WITH LatestOrders AS (
+    SELECT
+        c.CustomerID,
+        c.FirstName,
+        MAX(o.OrderDate) AS LastOrderDate
+    FROM Sales.Customers c
+    INNER JOIN Sales.Orders o
+        ON c.CustomerID = o.CustomerID
+    GROUP BY
+        c.CustomerID,
+        c.FirstName
+)
+SELECT
+    l.CustomerID,
+    l.FirstName,
+    l.LastOrderDate,
+    o.Sales AS LastOrderSales
+FROM LatestOrders l
+INNER JOIN Sales.Orders o
+    ON l.CustomerID = o.CustomerID
+    AND l.LastOrderDate = o.OrderDate
+WHERE o.Sales < 50;
