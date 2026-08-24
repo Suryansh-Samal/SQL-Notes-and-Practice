@@ -397,3 +397,30 @@ Left join Sales.Orders o on o.CustomerID = c.CustomerID
 Group by c.CustomerID,
          c.FirstName
 Order By TotalSales desc
+
+-- Can Also be done like this
+Select 
+	c.CustomerID,
+	C.FirstName,
+	Count(o.CustomerID) As TotalOrders,
+	Coalesce (Sum(o.Sales), 0) as TotalSales
+from Sales.Customers c
+Left join Sales.Orders o on o.CustomerID = c.CustomerID
+Group by c.CustomerID,
+         c.FirstName
+Order By TotalSales desc
+
+/* Q24 Find customers who have never placed an order.
+But this time, do NOT use LEFT JOIN + WHERE + IS NULL.
+Return:
+CustomerID | FirstName
+Requirement
+Only customers with zero orders should appear.*/
+Select 
+	c.CustomerID,
+	c.FirstName
+from Sales.Customers c
+where not exists  (
+	Select 1
+	from Sales.Orders o
+	Where c.CustomerID = o.CustomerID)
