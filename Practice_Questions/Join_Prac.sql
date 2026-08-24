@@ -560,3 +560,16 @@ WHERE NOT EXISTS (
     WHERE o.CustomerID = c.CustomerID
       AND o.Sales = 10
 );
+
+/* Q30 Find customers who have placed exactly one order.
+Return:
+CustomerID | FirstName | TotalOrders*/
+Select
+	c.CustomerID,
+	c.FirstName,
+	Count(o.OrderID) as TotalOrders
+From Sales.Customers c 
+Inner join Sales.Orders o on c.CustomerID = o.CustomerID
+Group by c.CustomerID,
+		 c.FirstName
+Having Count(o.OrderID) = 1
