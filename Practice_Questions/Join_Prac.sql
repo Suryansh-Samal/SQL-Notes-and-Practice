@@ -501,3 +501,38 @@ Group by c.CustomerID,
 		 c.FirstName
 Having Count(Distinct Month(o.OrderDate))>=2
 Order by DistinctMonths desc
+
+/* Q28 Find customers whose first order was also their highest-value order.
+Return:
+CustomerID | FirstName | FirstOrderDate | FirstOrderSales
+Requirements
+Customer must have at least one order.
+Find their earliest OrderDate.
+Find the highest Sales value among all their orders.
+Include the customer only if the sales of their first order equals their highest sale.
+If multiple orders exist on the first date, use the order with the highest Sales on that date.*/
+With FirstOrders As(
+	Select 
+		c.CustomerID,
+		c.FirstName,
+		o.OrderDate,
+		o.Sales,
+		ROW_NUMBER() over (Partition by c.CustomerID Order by o.OrderDate, o.Sales) as rn
+	from Sales.Customers c
+	Inner join Sales.Orders o  on c.CustomerID = o.CustomerID
+),
+MaxSales As (
+	Select 
+		o.CustomerID,
+		Max(Sales) as HighestSales
+	from Sales.Orders o 
+	Group by o.CustomerID
+)
+	Select 
+		fo.CustomerID,
+		fo.FirstName,
+		fo.OrderDate as FirstOrderDate,
+		fo.Sales as FirstOrderSales
+	from FirstOrders fo 
+	inner join MaxSales ms on fo.CustomerID = ms.CustomerID
+	where fo.rn = 1 and fo.sales = ms.HighestSales
