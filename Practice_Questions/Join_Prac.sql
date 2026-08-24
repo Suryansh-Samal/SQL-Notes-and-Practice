@@ -379,3 +379,21 @@ Select
 	(Select	
 		count(*) 
 	from Sales.Orders) As TotalOrders
+
+/* Q23 Find each customer's total number of orders and total sales, but include customers who have never placed
+an order.
+Return: CustomerID | FirstName | TotalOrders | TotalSales*
+Nulls Should be converted to 0*/
+Select 
+	c.CustomerID,
+	C.FirstName,
+	Count(o.CustomerID) As TotalOrders,
+	Case 
+	when Sum(o.Sales) is null then 0 
+    else Sum(o.sales) 
+	end As TotalSales
+from Sales.Customers c
+Left join Sales.Orders o on o.CustomerID = c.CustomerID
+Group by c.CustomerID,
+         c.FirstName
+Order By TotalSales desc
