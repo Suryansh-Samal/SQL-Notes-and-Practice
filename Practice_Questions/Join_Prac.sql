@@ -369,3 +369,13 @@ SELECT
 
     (SELECT COUNT(*) 
      FROM Sales.Orders) AS TotalOrders;
+
+-- Q22 Find All the customers along with total orders. Return TotalCustomers|TotalOrders
+Select
+	(Select
+		count(*) 
+	from Sales.Customers) AS TotalCustomers,
+
+	(Select	
+		count(*) 
+	from Sales.Orders) As TotalOrders
