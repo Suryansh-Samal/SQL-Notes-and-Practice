@@ -457,3 +457,29 @@ Select
 	Sales
 from CustomerRanks
 where CustomerRanking = 1
+
+/* Q26 Find the customer(s) who have placed the most orders.
+Return:
+CustomerID | FirstName | TotalOrders
+Requirements:
+Count orders per customer.
+Return all customers tied for the highest number of orders.
+Customers with zero orders should not be included.*/
+Select 
+	CustomerID,
+	FirstName,
+	TotalOrders
+from(
+Select * ,
+Rank() Over (Order by TotalOrders Desc) as CustomerRanks
+from(
+Select 
+	c.CustomerID,
+	c.FirstName,
+	Count(o.OrderID) as TotalOrders
+from Sales.Customers c
+inner join Sales.Orders o on c.CustomerID = o.CustomerID
+Group by c.CustomerID,
+		 c.FirstName)t 
+)x
+Where CustomerRanks = 1
