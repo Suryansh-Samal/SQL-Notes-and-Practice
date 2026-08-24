@@ -536,3 +536,27 @@ MaxSales As (
 	from FirstOrders fo 
 	inner join MaxSales ms on fo.CustomerID = ms.CustomerID
 	where fo.rn = 1 and fo.sales = ms.HighestSales
+
+/* Q29 Find customers who have placed at least one order, but have never placed an order with Sales = 10.
+Return:
+CustomerID | FirstName*/
+Select 
+	c.CustomerID,
+	c.FirstName
+from Sales.Customers c 
+inner join Sales.Orders o on c.CustomerID = o.CustomerID
+Group by c.CustomerID,
+		 c.FirstName
+Having Count (Case when o.Sales = 10 then 1 end) = 0;
+
+--Another Approach 
+SELECT
+    c.CustomerID,
+    c.FirstName
+FROM Sales.Customers c
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Sales.Orders o
+    WHERE o.CustomerID = c.CustomerID
+      AND o.Sales = 10
+);
