@@ -573,3 +573,29 @@ Inner join Sales.Orders o on c.CustomerID = o.CustomerID
 Group by c.CustomerID,
 		 c.FirstName
 Having Count(o.OrderID) = 1
+
+/* Q31 Find customers whose total sales are exactly equal to the highest total sales of any customer who has 
+placed an order.
+Return:
+CustomerID | FirstName | TotalSales*/
+With CustomerSales As (
+Select 
+	c.CustomerID,
+	c.FirstName,
+	Sum(o.Sales) TotalSales
+from Sales.Customers c
+inner join Sales.Orders o on c.CustomerID = o.CustomerID
+group by c.CustomerID,
+	     c.FirstName
+), 
+CustomerRanking As(
+Select *,
+ Rank() Over (Order By TotalSales desc) As CustomerRanks
+ from CustomerSales
+)
+Select 
+	CustomerID,
+	FirstName,
+	TotalSales
+from CustomerRanking
+where CustomerRanks = 1
