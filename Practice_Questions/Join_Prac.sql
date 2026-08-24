@@ -424,3 +424,36 @@ where not exists  (
 	Select 1
 	from Sales.Orders o
 	Where c.CustomerID = o.CustomerID)
+
+/* Q25 Find the customer(s) who have spent the most money on a single order.
+Return:
+CustomerID | FirstName | OrderID | Sales
+Requirements:
+Only orders with a matching customer.
+If multiple customers have an order with the same highest Sales, return all of them.
+You're looking for the highest individual order, not the customer's total sales.*/
+With CustomerDetails As(
+Select 
+	c.CustomerID,
+	C.FirstName,
+	o.OrderID,
+	o.Sales
+From Sales.Customers c
+Inner Join Sales.Orders o on c.CustomerID = o.CustomerID
+),
+CustomerRanks As(
+Select 
+ CustomerID,
+ FirstName,
+ OrderID,
+ Sales,
+ Rank() Over (Order By Sales Desc) as CustomerRanking
+ from CustomerDetails
+ )
+ Select 
+	CustomerID,
+	FirstName,
+	OrderID,
+	Sales
+from CustomerRanks
+where CustomerRanking = 1
