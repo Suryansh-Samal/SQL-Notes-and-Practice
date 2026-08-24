@@ -483,3 +483,21 @@ Group by c.CustomerID,
 		 c.FirstName)t 
 )x
 Where CustomerRanks = 1
+
+/* Q27 Find customers who have placed orders in at least 2 different months.
+Return:
+CustomerID | FirstName | DistinctMonths
+Requirements:
+Multiple orders in the same month count as one month.
+Only customers with orders in 2 or more different months.
+Sort by DistinctMonths descending.*/
+Select 
+	c.CustomerID,
+	c.FirstName,
+	Count(Distinct Month(o.OrderDate)) as DistinctMonths
+From Sales.Customers c
+Inner Join Sales.Orders o on c.CustomerID = o.CustomerID
+Group by c.CustomerID,
+		 c.FirstName
+Having Count(Distinct Month(o.OrderDate))>=2
+Order by DistinctMonths desc
