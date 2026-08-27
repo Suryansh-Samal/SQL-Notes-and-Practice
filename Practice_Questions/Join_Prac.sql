@@ -215,7 +215,6 @@ Select
 from Sales.Customers c
 Inner join Sales.Orders o on c.CustomerID = o.CustomerID
 group by c.CustomerID)t
-Where TotalOrders>1
 
 /* Q14 Find customers who have placed orders on at least 2 different dates.
 Return:
