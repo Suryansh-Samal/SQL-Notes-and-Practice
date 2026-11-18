@@ -636,3 +636,147 @@ INNER JOIN Sales.Orders o
     ON l.CustomerID = o.CustomerID
     AND l.LastOrderDate = o.OrderDate
 WHERE o.Sales < 50;
+
+/* Q34 Using Sales.Orders and Sales.Customers, find the top 2 customers by total sales within each country.*/
+With Customers as 
+(
+	Select distinct
+		c.Country,
+		c.customerid,
+		c.firstname,
+		o.Sales
+	from Sales.Customers as c
+	inner join Sales.Orders as o
+	on c.customerid = o.customerid	
+),
+
+TotalSales As
+(
+	Select 
+		Country,
+		CustomerID,
+		FirstName,
+		Sum(Sales) as TotalSales
+	from Customers
+	group by country,
+			 FirstName,
+			 customerid
+),
+
+SalesRank as 
+(
+	Select
+		Country,
+		CustomerID,
+		FirstName,
+	    TotalSales,
+		DENSE_RANK() Over (Partition by Country Order by TotalSales desc) as SalesRank
+	from TotalSales
+)
+
+Select 
+	Country,
+		CustomerID,
+		FirstName,
+	    TotalSales,
+		SalesRank
+from SalesRank
+where SalesRank<3
+
+/* Q35 Using Sales.Orders and Sales.Customers, 
+find customers whose total sales are greater than the average total sales across all customers who have placed orders.*/
+With TotalSales as 
+(
+	Select 
+		c.CustomerID,
+		c.FirstName,
+		c.Country,
+		Sum(Sales) as TotalSales
+	from Sales.Orders o 
+	inner join Sales.Customers c
+	on c.CustomerID = o.CustomerID
+	Group by c.CustomerID,
+			 c.FirstName,
+			 c.Country
+),
+
+AvgTS as
+(
+	Select 
+		CustomerID,
+		FirstName, 
+		Country,
+	    TotalSales,
+		Avg(TotalSales) Over() as AverageTotalSales
+	from TotalSales
+)
+
+Select 
+	CustomerID,
+	FirstName,
+	Country,
+	TotalSales
+from AvgTS
+where TotalSales>AverageTotalSales
+
+/* Q36 Using Sales.Orders, find customers who placed orders in two consecutive calendar months.*/
+
+WITH CustomerMonths AS
+(
+    SELECT DISTINCT
+        CustomerID,
+        DATEFROMPARTS(YEAR(OrderDate), MONTH(OrderDate), 1) AS OrderMonth
+    FROM Sales.Orders
+),
+PreviousMonths AS
+(
+    SELECT
+        CustomerID,
+        OrderMonth,
+        LAG(OrderMonth) OVER (
+            PARTITION BY CustomerID
+            ORDER BY OrderMonth
+        ) AS PreviousOrderMonth
+    FROM CustomerMonths
+)
+SELECT
+    CustomerID,
+    OrderMonth AS CurrentOrderMonth,
+    PreviousOrderMonth
+FROM PreviousMonths
+WHERE PreviousOrderMonth = DATEADD(MONTH, -1, OrderMonth)
+ORDER BY CustomerID, OrderMonth;
+
+/* Q37 Using Sales.Orders, find customers who placed at least one order in three consecutive calendar months.*/
+WITH CustomerMonths AS
+(
+    SELECT DISTINCT
+        CustomerID,
+        DATEFROMPARTS(YEAR(OrderDate), MONTH(OrderDate), 1) AS OrderMonth
+    FROM Sales.Orders
+),
+PreviousMonths AS
+(
+    SELECT
+        CustomerID,
+        OrderMonth,
+        LAG(OrderMonth, 1) OVER (
+            PARTITION BY CustomerID
+            ORDER BY OrderMonth
+        ) AS Month2,
+        LAG(OrderMonth, 2) OVER (
+            PARTITION BY CustomerID
+            ORDER BY OrderMonth
+        ) AS Month1
+    FROM CustomerMonths
+)
+SELECT
+    CustomerID,
+    Month1,
+    Month2,
+    OrderMonth AS Month3
+FROM PreviousMonths
+WHERE
+    Month2 = DATEADD(MONTH, -1, OrderMonth)
+    AND Month1 = DATEADD(MONTH, -2, OrderMonth)
+ORDER BY CustomerID, OrderMonth;
