@@ -97,7 +97,8 @@ Inner Join Sales.Orders o on p.ProductID = o.ProductID
 Group by p.Category
 Order by TotalSales Desc
 
-/* Q9 Find the total sales made by each customer for each product category. Include ONLY products that have been ordered at least once. Do not include customers/category combinations with no orders.
+/* Q9 Find the total sales made by each customer for each product category. Include ONLY products that have been ordered at least
+ once. Do not include customers/category combinations with no orders.
 Give CustomerID | FirstName | Category | TotalSales
 Sort by CustomerID ascending, then TotalSales descending.*/
 Select 
@@ -780,3 +781,34 @@ WHERE
     Month2 = DATEADD(MONTH, -1, OrderMonth)
     AND Month1 = DATEADD(MONTH, -2, OrderMonth)
 ORDER BY CustomerID, OrderMonth;
+
+/* Q38 Using Sales.Orders, calculate monthly total sales and compare each month with the previous month.*/
+WITH MonthlySales AS
+(
+    SELECT
+        FORMAT(OrderDate, 'yyyy-MM') AS SalesMonth,
+        SUM(Sales) AS MonthlySales
+    FROM Sales.Orders
+    GROUP BY FORMAT(OrderDate, 'yyyy-MM')
+),
+PreviousSales AS
+(
+    SELECT
+        SalesMonth,
+        MonthlySales,
+        LAG(MonthlySales) OVER (
+            ORDER BY SalesMonth
+        ) AS PreviousMonthSales
+    FROM MonthlySales
+)
+SELECT
+    SalesMonth,
+    MonthlySales,
+    PreviousMonthSales,
+    (
+        (MonthlySales - PreviousMonthSales) * 100.0
+        / NULLIF(PreviousMonthSales, 0)
+    ) AS GrowthPercentage
+FROM PreviousSales
+ORDER BY SalesMonth;
+
